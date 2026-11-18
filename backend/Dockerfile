@@ -15,8 +15,8 @@ RUN npm install --omit=dev && npm cache clean --force
 # Copy application source code with non-root ownership
 COPY --chown=node:node . .
 
-# Run as non-root user
-USER node
+# Run as non-root user (UID 1000 for node user)
+USER 1000:1000
 
 # Expose backend application port
 EXPOSE 3000
